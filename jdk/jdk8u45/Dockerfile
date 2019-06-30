@@ -13,7 +13,8 @@ echo "@root        hard    nproc           655350" >> /etc/security/limits.conf 
 echo "ulimit -SH 655350" >> /etc/rc.local
 
 # Install Oracle JDK 8u45
-RUN cd /tmp && \
+RUN -ex
+cd /tmp && \
     curl -L -O -H "Cookie: oraclelicense=accept-securebackup-cookie" -k "http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.rpm" && \
     yum localinstall -y jdk-8u45-linux-x64.rpm && \
     rm -f jdk-8u45-linux-x64.rpm 
